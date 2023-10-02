@@ -10,7 +10,7 @@ home = str(Path.home())
 from IPython.display import display, Markdown, Latex
 
 student_repo=open('student_repo.txt').read().strip()
-student_repo_path=f"{home}/{student_repo}"
+student_repo_path=f"{home}/.{student_repo}"
 github_organization=open('github_organization.txt').read().strip()
 
 def get_student_repo():
@@ -23,7 +23,7 @@ def get_student_repo():
         else:
             print("Success")
     else:
-        cmd = f"cd .. && git clone https://github.com/{github_organization}/{student_repo}.git"
+        cmd = f"cd .. && git clone https://github.com/{github_organization}/{student_repo}.git {student_repo_path}"
         r = os.system(cmd)
         if r != 0:
             print("Command failed:",cmd)
